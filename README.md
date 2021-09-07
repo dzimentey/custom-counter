@@ -1,4 +1,4 @@
-## See costom-counter app at  https://dzimentey.github.io/custom-counter/
+## See custom-counter app at  https://dzimentey.github.io/custom-counter/
 
 # Getting Started with Create React App
 
