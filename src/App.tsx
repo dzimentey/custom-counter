@@ -13,7 +13,10 @@ function App() {
     const maxValueChange = (e: ChangeEvent<HTMLInputElement>) => setMaxValue(e.currentTarget.valueAsNumber)
     const incrHandler = () => setCounter(counter + 1)
     const resetHandler = () => setCounter(minValue)
-    const setHandler = () => setCounter(minValue)
+    const setHandler = () => {
+        setCounter(minValue);
+        setLocal()
+    }
     const setLocal = () => {
         localStorage.setItem("maxValue", JSON.stringify(maxValue)) // put max value to local storage as string
         localStorage.setItem("minValue", JSON.stringify(minValue)) // put min value to local storage as string
