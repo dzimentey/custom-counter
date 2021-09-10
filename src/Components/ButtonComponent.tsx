@@ -12,10 +12,12 @@ type ButtonType = {
 export const ButtonComponent = (props: ButtonType) => {
     return(
         <Button variant={"contained"} color={"primary"} size={"small"}
-                onClick={()=>{
-                    props.click();
-                    props.setLocal && props.setLocal()
-                }}
+                onClick = {props.click}
+
+                // onClick={()=>{
+                //     props.click();
+                //     props.setLocal && props.setLocal()
+                // }}
                 disabled={props.disable}>{props.title}
         </Button>
     )
