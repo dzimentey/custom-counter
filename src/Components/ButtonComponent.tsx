@@ -6,7 +6,7 @@ type ButtonType = {
     maxValue?: number
     disable?: boolean
     click: () => void
-    setLocal?: () => void
+    //setLocal?: () => void
 }
 
 export const ButtonComponent = (props: ButtonType) => {
