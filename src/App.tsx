@@ -9,6 +9,7 @@ function App() {
     const [counter, setCounter] = useState(initValue)
     const [minValue, setMinValue] = useState(0)
     const [maxValue, setMaxValue] = useState(1)
+    const [error, setError] = useState<string | boolean>('')
     const minValueChange = (e: ChangeEvent<HTMLInputElement>) => setMinValue(e.currentTarget.valueAsNumber)
     const maxValueChange = (e: ChangeEvent<HTMLInputElement>) => setMaxValue(e.currentTarget.valueAsNumber)
     const incrHandler = () => setCounter(counter + 1)
@@ -63,7 +64,7 @@ function App() {
 
             <Paper elevation={6} square className={"paper"}>
 
-                <Display counter={counter} maxValue={maxValue}/>
+                <Display counter={counter} maxValue={maxValue} error={error}/>
 
                 <div className={"controls"}>
                     <ButtonComponent counter={counter} maxValue={maxValue} title={"incr"}
