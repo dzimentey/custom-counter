@@ -5,24 +5,43 @@ import {Display} from "./Components/Display";
 import {ButtonComponent} from "./Components/ButtonComponent";
 
 function App() {
-    let initMinValue: number = 0
-    let initMaxValue: number = 1
-    const [counter, setCounter] = useState(initMinValue)
+
+    const [counter, setCounter] = useState(0)
     const [minValue, setMinValue] = useState(0)
-    const [maxValue, setMaxValue] = useState(initMaxValue)
+    const [maxValue, setMaxValue] = useState(1)
+
     const [error, setError] = useState<string | boolean>('')
     const minValueChange = (e: ChangeEvent<HTMLInputElement>) => setMinValue(e.currentTarget.valueAsNumber)
     const maxValueChange = (e: ChangeEvent<HTMLInputElement>) => setMaxValue(e.currentTarget.valueAsNumber)
     const incrHandler = () => setCounter(counter + 1)
     const resetHandler = () => {
-        setCounter(minValue);
-        setError('')
+        if (minValue >= maxValue) {
+            setMinValue(0)
+        } else if (minValue < 0) {
+            setMinValue(0);
+            setCounter(0)
+        } else {
+            setCounter(minValue)
+        }
+
+        if (maxValue < 1) {
+            setMaxValue(1)
+        }
+        //setError('')
+
+        // let minMin = localStorage.getItem("minValue")
+        // if (minMin){setCounter(  JSON.parse(minMin)  )}
+
+        //setCounter(minValue)
+
+
     }
     const setHandler = () => {
+
         if (minValue >= maxValue) {
             setError("error")
         } else {
-            setCounter(minValue);
+            setCounter(minValue)
             setLocal()
             setError('')
         }
@@ -56,6 +75,14 @@ function App() {
     if (minValue >= maxValue) {
         disableSetButton = true
     }
+    if (minValue < 0) {
+        disableSetButton = true
+    }
+
+    let disableResetButton = false
+    if (minValue >= maxValue) {
+        disableResetButton = true
+    }
 
     return (
         <div className="App">
@@ -63,9 +90,9 @@ function App() {
 
                 <div className={"inputs"}>
                     <div>max value:</div>
-                    <input type="number"  value={maxValue} onInput={maxValueChange}/>
+                    <input type="number" value={maxValue} onInput={maxValueChange}/>
                     <div>start value:</div>
-                    <input type="number"  value={minValue} onChange={minValueChange}/>
+                    <input type="number" value={minValue} onChange={minValueChange}/>
                 </div>
 
                 <div className={"controls"}>
