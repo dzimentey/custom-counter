@@ -13,6 +13,7 @@ function App() {
     const [error, setError] = useState<string | boolean>('')
     const minValueChange = (e: ChangeEvent<HTMLInputElement>) => setMinValue(e.currentTarget.valueAsNumber)
     const maxValueChange = (e: ChangeEvent<HTMLInputElement>) => setMaxValue(e.currentTarget.valueAsNumber)
+
     const incrHandler = () => setCounter(counter + 1)
     const resetHandler = () => {
         if (minValue >= maxValue) {
@@ -27,15 +28,27 @@ function App() {
         if (maxValue < 1) {
             setMaxValue(1)
         }
-        //setError('')
 
         // let minMin = localStorage.getItem("minValue")
         // if (minMin){setCounter(  JSON.parse(minMin)  )}
 
         //setCounter(minValue)
 
-
     }
+
+    // const onInputHandler = () => {
+    //     maxValue <= minValue ? setError("error") : setError("")
+    //     minValue < 0 ? setError("error") : setError("")
+    // }
+
+    let inputError = false
+    if (maxValue <= minValue) {
+        inputError = true
+    }
+    if (minValue < 0) {
+        inputError = true
+    }
+
     const setHandler = () => {
 
         if (minValue >= maxValue) {
@@ -90,9 +103,13 @@ function App() {
 
                 <div className={"inputs"}>
                     <div>max value:</div>
-                    <input type="number" value={maxValue} onInput={maxValueChange}/>
+                    <input className={inputError ? "inputError" : ""} type="number" value={maxValue}
+                           onInput={maxValueChange}
+
+                    />
                     <div>start value:</div>
-                    <input type="number" value={minValue} onChange={minValueChange}/>
+                    <input className={inputError ? "inputError" : ""} type="number" value={minValue}
+                           onChange={minValueChange}/>
                 </div>
 
                 <div className={"controls"}>
