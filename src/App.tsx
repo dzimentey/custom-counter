@@ -13,7 +13,10 @@ function App() {
     const minValueChange = (e: ChangeEvent<HTMLInputElement>) => setMinValue(e.currentTarget.valueAsNumber)
     const maxValueChange = (e: ChangeEvent<HTMLInputElement>) => setMaxValue(e.currentTarget.valueAsNumber)
     const incrHandler = () => setCounter(counter + 1)
-    const resetHandler = () => setCounter(minValue)
+    const resetHandler = () => {
+        setCounter(minValue);
+        setError('')
+    }
     const setHandler = () => {
         if (minValue >= maxValue) {
             setError("error")
