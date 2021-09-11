@@ -5,10 +5,11 @@ import {Display} from "./Components/Display";
 import {ButtonComponent} from "./Components/ButtonComponent";
 
 function App() {
-    let initValue: number = 0
-    const [counter, setCounter] = useState(initValue)
+    let initMinValue: number = 0
+    let initMaxValue: number = 1
+    const [counter, setCounter] = useState(initMinValue)
     const [minValue, setMinValue] = useState(0)
-    const [maxValue, setMaxValue] = useState(1)
+    const [maxValue, setMaxValue] = useState(initMaxValue)
     const [error, setError] = useState<string | boolean>('')
     const minValueChange = (e: ChangeEvent<HTMLInputElement>) => setMinValue(e.currentTarget.valueAsNumber)
     const maxValueChange = (e: ChangeEvent<HTMLInputElement>) => setMaxValue(e.currentTarget.valueAsNumber)
