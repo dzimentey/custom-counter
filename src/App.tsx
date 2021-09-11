@@ -47,9 +47,14 @@ function App() {
         }
     }, [])
 
-    let disableButton = false
+    let disableIncrButton = false
     if (counter >= maxValue) {
-        disableButton = true
+        disableIncrButton = true
+    }
+
+    let disableSetButton = false
+    if (minValue >= maxValue) {
+        disableSetButton = true
     }
 
     return (
@@ -64,7 +69,7 @@ function App() {
                 </div>
 
                 <div className={"controls"}>
-                    <ButtonComponent title={"set"} click={setHandler}
+                    <ButtonComponent title={"set"} click={setHandler} disable={disableSetButton}
                         //setLocal={setLocal}
                     />
                 </div>
@@ -77,7 +82,7 @@ function App() {
 
                 <div className={"controls"}>
                     <ButtonComponent counter={counter} maxValue={maxValue} title={"incr"}
-                                     click={incrHandler} disable={disableButton}
+                                     click={incrHandler} disable={disableIncrButton}
                     />
                     <ButtonComponent title={"reset"} click={resetHandler}/>
                 </div>
