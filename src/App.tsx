@@ -15,8 +15,13 @@ function App() {
     const incrHandler = () => setCounter(counter + 1)
     const resetHandler = () => setCounter(minValue)
     const setHandler = () => {
-        setCounter(minValue);
-        setLocal()
+        if (minValue >= maxValue) {
+            setError("error")
+        } else {
+            setCounter(minValue);
+            setLocal()
+            setError('')
+        }
     }
     const setLocal = () => {
         localStorage.setItem("maxValue", JSON.stringify(maxValue)) // put max value to local storage as string
@@ -49,9 +54,9 @@ function App() {
 
                 <div className={"inputs"}>
                     <div>max value:</div>
-                    <input type="number" min={minValue + 1} value={maxValue} onInput={maxValueChange}/>
+                    <input type="number"  value={maxValue} onInput={maxValueChange}/>
                     <div>start value:</div>
-                    <input type="number" max={maxValue - 1} value={minValue} onChange={minValueChange}/>
+                    <input type="number"  value={minValue} onChange={minValueChange}/>
                 </div>
 
                 <div className={"controls"}>
