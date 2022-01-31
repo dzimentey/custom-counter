@@ -4,7 +4,7 @@ import {Paper} from "@material-ui/core";
 import {Display} from "./Components/Display";
 import {ButtonComponent} from "./Components/ButtonComponent";
 
-function App() {
+const App = () => {
 
     const [counter, setCounter] = useState(0)
     const [minValue, setMinValue] = useState(0)
@@ -59,10 +59,12 @@ function App() {
             setError('')
         }
     }
+
     const setLocal = () => {
         localStorage.setItem("maxValue", JSON.stringify(maxValue)) // put max value to local storage as string
         localStorage.setItem("minValue", JSON.stringify(minValue)) // put min value to local storage as string
     }
+
     useEffect(() => { // set values from local storage when page will be reloaded
         let minValueAsString = localStorage.getItem("minValue") //get min value from local storage as string
         let maxValueAsString = localStorage.getItem("maxValue") // get max value from local storage as string
