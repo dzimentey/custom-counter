@@ -28,18 +28,7 @@ const App = () => {
         if (maxValue < 1) {
             setMaxValue(1)
         }
-
-        // let minMin = localStorage.getItem("minValue")
-        // if (minMin){setCounter(  JSON.parse(minMin)  )}
-
-        //setCounter(minValue)
-
     }
-
-    // const onInputHandler = () => {
-    //     maxValue <= minValue ? setError("error") : setError("")
-    //     minValue < 0 ? setError("error") : setError("")
-    // }
 
     let inputError = false
     if (maxValue <= minValue) {
@@ -107,7 +96,6 @@ const App = () => {
                     <div>max value:</div>
                     <input className={inputError ? "inputError" : ""} type="number" value={maxValue}
                            onInput={maxValueChange}
-
                     />
                     <div>start value:</div>
                     <input className={inputError ? "inputError" : ""} type="number" value={minValue}
@@ -115,9 +103,7 @@ const App = () => {
                 </div>
 
                 <div className={"controls"}>
-                    <ButtonComponent title={"set"} click={setHandler} disable={disableSetButton}
-                        //setLocal={setLocal}
-                    />
+                    <ButtonComponent title={"set"} click={setHandler} disable={disableSetButton}/>
                 </div>
 
             </Paper>
